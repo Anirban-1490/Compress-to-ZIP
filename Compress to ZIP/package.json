@@ -1,18 +1,21 @@
 {
   "name": "compress-to-zip",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "compress.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["zip","zlib","compress"],
+  "keywords": [
+    "zip",
+    "zlib",
+    "compress"
+  ],
   "author": "Anirban Pratihar",
   "license": "ISC",
   "dependencies": {
     "zip-lib": "^0.7.3"
-  }
-  ,
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Anirban-1490/Compress-to-ZIP.git"
