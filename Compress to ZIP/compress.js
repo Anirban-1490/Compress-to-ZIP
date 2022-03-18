@@ -1,35 +1,38 @@
 const zlib = require("zip-lib");
-const path = require("path")
 
 //compress single file  
 
-const compressSingleFile = async (sourceFilePath , compressFilePath) =>{
+const compressSingleFile = async (sourceFilePath , compressFilePath,callbc = function(err=null){}) =>{
 
     try {
       await zlib.archiveFile(sourceFilePath,compressFilePath)
-      console.log("Successfully compressed the file!");
+      if(callbc) return callbc()
         
     } catch (error) {
-        console.log("Oops! something happened ");
-        console.log("Error message" + error.message);
+        return callbc(error);
     }
 }
 
 
 //try something like below ----- 
-// compressSingleFile("./test.txt","./test-compress.zip")
+
+compressSingleFile("./tet.txt","./test-compress.zip",(err)=>{
+    if(err){
+      return  console.log(err.message);
+    }
+    console.log("done successfully");
+})
 
 
 
-const compressSingleFolder = async (sourceFolderPath , compressFolderPath) =>{
+const compressSingleFolder = async (sourceFolderPath , compressFolderPath,callbc = function(err=null){}) =>{
 
     try {
       await zlib.archiveFolder(sourceFolderPath,compressFolderPath)
-      console.log("Successfully compressed the Folder " + path.basename(sourceFolderPath));
+      if(callbc) return callbc()
         
     } catch (error) {
-        console.log("Oops! something happened ");
-        console.log("Error message" + error.message);
+        return callbc(error);
     }
 }
 
@@ -37,7 +40,7 @@ const compressSingleFolder = async (sourceFolderPath , compressFolderPath) =>{
 //compressSingleFolder("./testfolder","./testfolder-compress.zip")
 
 
-const compressMultiple = async ({filePaths,folderPaths,compressPath}) =>{
+const compressMultiple = async ({filePaths,folderPaths,compressPath},callbc = function(err=null){}) =>{
 
     try {
      
@@ -55,10 +58,10 @@ const compressMultiple = async ({filePaths,folderPaths,compressPath}) =>{
         }
 
         await zip.archive(compressPath)
-        console.log("Successfully compressed as " + path.basename(compressPath));
+        if(callbc) return callbc()
+       
     } catch (error) {
-        console.log("Oops! something happened ");
-        console.log("Error message" + error.message);
+        return callbc(error);
     }
 }
 
