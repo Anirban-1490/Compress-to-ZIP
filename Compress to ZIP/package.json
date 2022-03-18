@@ -1,6 +1,6 @@
 {
   "name": "compress-to-zip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "compress.js",
   "scripts": {
@@ -11,5 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "zip-lib": "^0.7.3"
+  }
+  ,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anirban-1490/Compress-to-ZIP.git"
   }
 }
